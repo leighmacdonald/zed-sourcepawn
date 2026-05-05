@@ -1,0 +1,7 @@
+id = "sourcepawn"
+name = "Sourcepawn"
+version = "0.0.1"
+schema_version = 1
+authors = ["Leigh MacDonald <leigh.macdonald@gmail.com>"]
+description = "Sourcepawn language support for Zed"
+repository = "https://github.com/leighmacdonald/zed-sourcepawn"
