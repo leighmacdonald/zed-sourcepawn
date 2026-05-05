@@ -1,14 +1,5 @@
 name = "Sourcepawn"
 grammar = "sourcepawn"
-path_suffixes = ["sp", "inc"]
-line_comments = ["//", "/*"]
-tab_size = 4
-repository = "https://github.com/leighmacdonald/zed-sourcepawn"
-
-[grammars.sourcepawn]
-repository = "file:///projects/tree-sitter-sourcepawn"
-rev = "5a8fdd446b516c81e218245c12129c6ad4bccfa2"
-
-[language_servers.sourcepawn-studio]
-name = "Sourcepawn Studio"
-language = "Sourcepawn"
+path_suffixes = ["sp", "inc", "games.txt", "phrases.txt", "cfg"]
+line_comments = ["// "]
+documentation = { start = "/*", end = "*/", prefix = "* ", tab_size = 1 }

@@ -11,6 +11,7 @@ public Plugin myinfo = {
 public void OnPluginStart() {
     // Register the command 'sm_hello'
     RegConsoleCmd("sm_hello", Command_Hello, "print hello world");
+
 }
 
 public Action Command_Hello(int client, int args) {
