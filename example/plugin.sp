@@ -2,9 +2,9 @@
 #include <tf2>
 #include <tf2_stocks>
 
-enum struct es {
-    int a;
-    char b[244];
+enum struct ES {
+    int a
+    char b[244]
 }
 
 public Plugin myinfo = {
