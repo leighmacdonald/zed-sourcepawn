@@ -69,12 +69,11 @@ impl zed::Extension for SourcepawnExtension {
         language_server_id: &LanguageServerId,
         worktree: &zed::Worktree,
     ) -> Result<Option<serde_json::Value>> {
-        let mut x = LspSettings::for_worktree(language_server_id.as_ref(), worktree)
+        let x = LspSettings::for_worktree(language_server_id.as_ref(), worktree)
             .ok()
             .unwrap();
-        let v = serde_json::to_value(Config::default()).unwrap();
-        x.initialization_options = Some(v);
-
+        let root = worktree.root_path();
+        println!("{:?}", root);
         println!("{:?}", &x);
 
         let opts = x.initialization_options.clone();
@@ -82,30 +81,30 @@ impl zed::Extension for SourcepawnExtension {
         Ok(Some(serde_json::json!(opts)))
     }
 
-    fn label_for_completion(
-        &self,
-        language_server_id: &LanguageServerId,
-        completion: Completion,
-    ) -> Option<CodeLabel> {
-        match language_server_id.as_ref() {
-            SourcepawnLsp::SERVER_ID => self
-                .sourcepawn_lsp
-                .as_ref()?
-                .label_for_completion(completion),
-            _ => None,
-        }
-    }
+    // fn label_for_completion(
+    //     &self,
+    //     language_server_id: &LanguageServerId,
+    //     completion: Completion,
+    // ) -> Option<CodeLabel> {
+    //     match language_server_id.as_ref() {
+    //         SourcepawnLsp::SERVER_ID => self
+    //             .sourcepawn_lsp
+    //             .as_ref()?
+    //             .label_for_completion(completion),
+    //         _ => None,
+    //     }
+    // }
 
-    fn label_for_symbol(
-        &self,
-        language_server_id: &LanguageServerId,
-        symbol: Symbol,
-    ) -> Option<CodeLabel> {
-        match language_server_id.as_ref() {
-            SourcepawnLsp::SERVER_ID => self.sourcepawn_lsp.as_ref()?.label_for_symbol(symbol),
-            _ => None,
-        }
-    }
+    // fn label_for_symbol(
+    //     &self,
+    //     language_server_id: &LanguageServerId,
+    //     symbol: Symbol,
+    // ) -> Option<CodeLabel> {
+    //     match language_server_id.as_ref() {
+    //         SourcepawnLsp::SERVER_ID => self.sourcepawn_lsp.as_ref()?.label_for_symbol(symbol),
+    //         _ => None,
+    //     }
+    // }
 }
 
 zed::register_extension!(SourcepawnExtension);

@@ -12,7 +12,7 @@
 
 ; Methods / Properties
 (field_access
-  field: (identifier) @field)
+  field: (identifier) @property)
 
 ; Function calls
 (call_expression
@@ -28,27 +28,27 @@
 
 ; Variables
 (variable_storage_class) @storageclass
-(variable_declaration 
+(variable_declaration
   name: (identifier) @variable)
 (old_variable_declaration
   name: (identifier) @variable)
 
 ; Preprocessor
-(preproc_include) @include
-(preproc_tryinclude) @include
+(preproc_include) @keyword
+(preproc_tryinclude) @keyword
 (system_lib_string) @string
 (string_literal) @string
 
-(preproc_assert) @preproc
-(preproc_pragma) @preproc
+(preproc_assert) @keyword
+(preproc_pragma) @keyword
 (preproc_arg) @constant
 (preproc_macro) @function.macro
 (macro_param) @parameter
-(preproc_if) @preproc
-(preproc_else) @preproc
-(preproc_elseif) @preproc
-(preproc_endif) @preproc
-(preproc_endinput) @preproc
+(preproc_if) @keyword
+(preproc_else) @keyword
+(preproc_elseif) @keyword
+(preproc_endif) @keyword
+(preproc_endinput) @keyword
 (preproc_define) @define
 (preproc_define
   name: (identifier) @constant)
@@ -113,7 +113,7 @@
 (enum_struct
   name: (identifier) @type)
 (enum_struct_field
-  name: (identifier) @field)
+  name: (identifier) @variable)
 (enum_struct_method
   name: (identifier) @method)
 
@@ -252,4 +252,5 @@
   "while"
 ] @keyword
 
-(identifier) @variable
+; Seems to remove most useful highlighting, needed?
+; (identifier) @variable
